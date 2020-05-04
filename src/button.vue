@@ -1,6 +1,7 @@
 <template>
     <button class="g-button" :class="`icon-${iconPosition}`">
         <g-icon v-if="icon" :name="icon" class="icon"></g-icon>
+        <g-icon v-if="icon && icon === 'loading'" :name="icon" class="icon loading"></g-icon>
         <div class="content">
             <slot></slot>
         </div>
@@ -32,6 +33,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
     .g-button {
         height: var(--button-height);
         font-size: var(--font-size);
@@ -69,6 +78,9 @@
             > .content {
                 order: 1;
             }
+        }
+        .loading {
+            animation: spin 2s infinite linear;
         }
     }
 </style>
