@@ -31,7 +31,11 @@
         <g-button icon="settings">按钮</g-button>
         <g-button :loading="loading2" icon="settings" icon-position="right" @click="loading2 = !loading2">按钮</g-button>
         <g-button :loading="true" icon-position="right">加载中</g-button>
-        <g-icon name="loading"></g-icon>
+        <g-button-group>
+            <g-button icon="left">上一页</g-button>
+            <g-button>第1页</g-button>
+            <g-button icon="right" icon-position="right">下一页</g-button>
+        </g-button-group>
     </div>
 
     <script src="//at.alicdn.com/t/font_1797517_olx4c7tgwui.js"></script>
