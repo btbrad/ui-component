@@ -23,7 +23,7 @@ import chai from 'chai'
 const expect = chai.expect
 
 // 单元测试
-// icon
+// 测试icon是否设置成功
 {
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
@@ -36,7 +36,7 @@ const expect = chai.expect
   let useElement = button.$el.querySelector('use')
   expect(useElement.getAttribute('xlink:href')).to.eq('#i-settings')
 }
-// loading
+// 测试loading  loading会覆盖其他icon
 {
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
@@ -51,7 +51,7 @@ const expect = chai.expect
   let href = useElement.getAttribute('xlink:href')
   expect(href).to.eq('#i-loading')
 }
-// oder 
+// oder 测试icon的位置
 {
   let div = document.createElement('div')
   document.body.appendChild(div)
@@ -87,7 +87,7 @@ const expect = chai.expect
   button.$el.remove()
   button.$destroy()
 }
-// click mock
+// click mock 测试click事件
 import spies from 'chai-spies'
 
 chai.use(spies)

@@ -1,6 +1,6 @@
 <template>
   <svg class="icon">
-      <use :xlink:href="`#i-${name}`"></use>
+    <use :xlink:href="`#i-${name}`"></use>
   </svg>
 </template>
 
@@ -12,12 +12,12 @@ export default {
       type: String
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 .icon {
-    height: 1em;
-    width: 1em;
+  height: 1em;
+  width: 1em;
 }
 </style>
