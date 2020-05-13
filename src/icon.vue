@@ -5,8 +5,10 @@
 </template>
 
 <script>
+import './svg.js'
+
 export default {
-  name: 'g-icon',
+  name: 'GuruIcon',
   props: {
     name: {
       type: String
@@ -15,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .icon {
   height: 1em;
   width: 1em;

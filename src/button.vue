@@ -16,7 +16,7 @@
 import ICon from './icon';
 
 export default {
-  name: 'g-button',
+  name: 'GuruButton',
   components: {
     GIcon: ICon
   },
