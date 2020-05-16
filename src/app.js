@@ -17,6 +17,11 @@ let vm = new Vue({
         loading2: true,
         loading3: false
       }
+    },
+    methods: {
+      inputChange(e) {
+        console.log('change', e.target.value)
+      }
     }
 })
 
