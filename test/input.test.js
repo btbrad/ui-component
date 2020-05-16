@@ -76,8 +76,9 @@ const expect = chai.expect;
           const callback = sinon.fake();
           vm.$on(item, callback)
           let event = new Event(item)
+          Object.defineProperty(event, 'target', {value: {value: 'hi'}, enumerable: true})
           vm.$el.querySelector('input').dispatchEvent(event)
-          expect(callback).to.have.been.calledWith(event)
+          expect(callback).to.have.been.calledWith('hi')
         })
       })
 
