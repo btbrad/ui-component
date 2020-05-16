@@ -15,7 +15,8 @@ let vm = new Vue({
       return {
         loading1: false,
         loading2: true,
-        loading3: false
+        loading3: false,
+        name: '王五'
       }
     },
     methods: {
