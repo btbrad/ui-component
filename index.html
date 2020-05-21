@@ -22,15 +22,6 @@
         #app {
             margin: 20px;
         }
-        .row {
-            display: flex;
-        }
-        .col {
-            height: 100px;
-            background: grey;
-            width: 50%;
-            border: 1px solid red;
-        }
     </style>
 </head>
 <body>
@@ -72,6 +63,25 @@
             <g-row>
                 <g-col :span="2"></g-col>
                 <g-col span="22"></g-col>
+            </g-row>
+            <g-row>
+                <g-col :span="2"></g-col>
+                <g-col span="20" :offset="2"></g-col>
+            </g-row>
+            <g-row>
+                <g-col :span="4"></g-col>
+                <g-col :span="2" :offset="2"></g-col>
+                <g-col :span="2" :offset="4"></g-col>
+                <g-col span="10"></g-col>
+            </g-row>
+            <g-row :gutter="20">
+                <g-col :span="12"></g-col>
+                <g-col span="12"></g-col>
+            </g-row>
+            <g-row :gutter="20">
+                <g-col></g-col>
+                <g-col></g-col>
+                <g-col></g-col>
             </g-row>
         </div>
     </div>
