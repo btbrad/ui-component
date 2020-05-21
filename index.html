@@ -22,6 +22,9 @@
         #app {
             margin: 20px;
         }
+        .demo-col {
+          border: 1px solid #f40;
+        }
     </style>
 </head>
 <body>
@@ -52,36 +55,8 @@
             <hr style="margin: 20px 0">
             <h2>网格系统</h2>
             <g-row>
-                <g-col></g-col>
-                <g-col></g-col>
-            </g-row>
-            <g-row>
-                <g-col></g-col>
-                <g-col></g-col>
-                <g-col></g-col>
-            </g-row>
-            <g-row>
-                <g-col :span="2"></g-col>
-                <g-col span="22"></g-col>
-            </g-row>
-            <g-row>
-                <g-col :span="2"></g-col>
-                <g-col span="20" :offset="2"></g-col>
-            </g-row>
-            <g-row>
-                <g-col :span="4"></g-col>
-                <g-col :span="2" :offset="2"></g-col>
-                <g-col :span="2" :offset="4"></g-col>
-                <g-col span="10"></g-col>
-            </g-row>
-            <g-row :gutter="20">
-                <g-col :span="12"></g-col>
-                <g-col span="12"></g-col>
-            </g-row>
-            <g-row :gutter="20">
-                <g-col>1</g-col>
-                <g-col>2</g-col>
-                <g-col>3</g-col>
+                <g-col class="demo-col" :span="9"></g-col>
+                <g-col class="demo-col" :offset="6" :span="9"></g-col>
             </g-row>
         </div>
     </div>
