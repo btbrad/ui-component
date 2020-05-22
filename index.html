@@ -55,8 +55,18 @@
             <hr style="margin: 20px 0">
             <h2>网格系统</h2>
             <g-row>
-                <g-col class="demo-col" :span="9"></g-col>
-                <g-col class="demo-col" :offset="6" :span="9"></g-col>
+                <g-col class="demo-col" :span="9">1</g-col>
+                <g-col class="demo-col" :offset="6" :span="9">2</g-col>
+            </g-row>
+            <g-row>
+                <g-col class="demo-col" 
+                    :span="12" :phone="{span:12}" 
+                    :ipad="{span:10}" 
+                    :narrowpc="{span: 8}"
+                    :pc="{span: 6}"
+                    :widepc="{span: 4}"
+                    >1</g-col>
+                <g-col class="demo-col" :span="12" :phone="{span:12, offset:0}">2</g-col>
             </g-row>
         </div>
     </div>
