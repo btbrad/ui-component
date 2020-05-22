@@ -71,7 +71,19 @@ export default {
 <style scoped lang="scss">
   .col {
 
-    $class-prefix: col-;
+    // $class-prefix: col-;
+    // @for $n from 1 through 24 {
+    //   &.#{$class-prefix}#{$n} {
+    //     width: ($n / 24) * 100%;
+    //   }
+    // }
+    // $class-prefix: offset-;
+    // @for $n from 1 through 24 {
+    //   &.#{$class-prefix}#{$n} {
+    //     margin-left: ($n / 24) * 100%;
+    //   }
+    // }
+    $class-prefix: col-phone-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
         width: ($n / 24) * 100%;
@@ -83,21 +95,7 @@ export default {
         margin-left: ($n / 24) * 100%;
       }
     }
-    @media (max-width: 576px) {
-      $class-prefix: col-phone-;
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}#{$n} {
-          width: ($n / 24) * 100%;
-        }
-      }
-      $class-prefix: offset-;
-      @for $n from 1 through 24 {
-        &.#{$class-prefix}#{$n} {
-          margin-left: ($n / 24) * 100%;
-        }
-      }
-    }
-    @media (min-width: 577px) and (max-width: 576px) {
+    @media (min-width: 576px) {
       $class-prefix: col-ipad-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
@@ -111,7 +109,7 @@ export default {
         }
       }
     }
-    @media (min-width: 769px) and (max-width: 992px) {
+    @media (min-width: 768px) {
       $class-prefix: col-narrow-pc-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
@@ -125,7 +123,7 @@ export default {
         }
       }
     }
-    @media (min-width: 993px) and (max-width: 1200px) {
+    @media (min-width: 992px) {
       $class-prefix: col-pc-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
@@ -139,7 +137,7 @@ export default {
         }
       }
     }
-    @media (min-width: 1201px) {
+    @media (min-width: 1200px) {
       $class-prefix: col-wide-pc-;
       @for $n from 1 through 24 {
         &.#{$class-prefix}#{$n} {
