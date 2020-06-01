@@ -5,6 +5,11 @@ import GButtonGroup from './button-group.vue'
 import GInput from './input.vue'
 import GRow from './row.vue'
 import GCol from './col.vue'
+import GLayout from './layout.vue'
+import GHeader from './header.vue'
+import GSider from './sider.vue'
+import GContent from './content.vue'
+import GFooter from './footer.vue'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -12,22 +17,27 @@ Vue.component('g-button-group', GButtonGroup)
 Vue.component('g-input', GInput)
 Vue.component('g-row', GRow)
 Vue.component('g-col', GCol)
+Vue.component('g-layout', GLayout)
+Vue.component('g-header', GHeader)
+Vue.component('g-sider', GSider)
+Vue.component('g-content', GContent)
+Vue.component('g-footer', GFooter)
 
 let vm = new Vue({
-    el: '#app',
-    data() {
-      return {
-        loading1: false,
-        loading2: true,
-        loading3: false,
-        name: '王五'
-      }
-    },
-    methods: {
-      inputChange(e) {
-        console.log('change', e.target.value)
-      }
+  el: '#app',
+  data() {
+    return {
+      loading1: false,
+      loading2: true,
+      loading3: false,
+      name: '王五',
     }
+  },
+  methods: {
+    inputChange(e) {
+      console.log('change', e.target.value)
+    },
+  },
 })
 
 import chai from 'chai'
@@ -40,8 +50,8 @@ const expect = chai.expect
   const Constructor = Vue.extend(Button)
   const button = new Constructor({
     propsData: {
-      icon: 'settings'
-    }
+      icon: 'settings',
+    },
   })
   button.$mount('#test')
 
@@ -54,8 +64,8 @@ const expect = chai.expect
   const button = new Constructor({
     propsData: {
       icon: 'settings',
-      loading: true
-    }
+      loading: true,
+    },
   })
   button.$mount()
 
@@ -71,13 +81,13 @@ const expect = chai.expect
   const button = new Constructor({
     propsData: {
       icon: 'settings',
-      iconPosition: 'right'
-    }
+      iconPosition: 'right',
+    },
   })
   button.$mount(div)
 
   let svg = button.$el.querySelector('svg')
-  let {order} = window.getComputedStyle(svg)
+  let { order } = window.getComputedStyle(svg)
   expect(order).to.eq('2')
   button.$el.remove()
   button.$destroy()
@@ -89,12 +99,12 @@ const expect = chai.expect
   const button = new Constructor({
     propsData: {
       icon: 'settings',
-    }
+    },
   })
   button.$mount(div)
 
   let svg = button.$el.querySelector('svg')
-  let {order} = window.getComputedStyle(svg)
+  let { order } = window.getComputedStyle(svg)
   expect(order).to.eq('1')
   button.$el.remove()
   button.$destroy()
@@ -108,10 +118,10 @@ chai.use(spies)
   const vm = new Constructor({
     propsData: {
       icon: 'settings',
-    }
+    },
   })
   vm.$mount()
-  let spy = chai.spy(()=>{})
+  let spy = chai.spy(() => {})
   vm.$on('click', spy)
   let button = vm.$el
   button.click()

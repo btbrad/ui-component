@@ -1,24 +1,23 @@
 <!--
  * @Author: btbrad
- * @Date: 2020-06-01 22:14:29
+ * @Date: 2020-06-01 22:16:02
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-01 22:37:45
+ * @LastEditTime: 2020-06-01 22:37:16
  * @Description: 
 --> 
 <template>
-  <div class="content">
+  <div class="header">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'GuruContent'
+  name: 'GuruHeader'
 }
 </script>
 
 <style scoped lang="scss">
-.content {
-  flex-grow: 1;
+.header {
 }
 </style>
