@@ -10,6 +10,8 @@ import GHeader from './header.vue'
 import GSider from './sider.vue'
 import GContent from './content.vue'
 import GFooter from './footer.vue'
+import GToast from './toast.vue'
+import plugin from './plugin'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -22,6 +24,8 @@ Vue.component('g-header', GHeader)
 Vue.component('g-sider', GSider)
 Vue.component('g-content', GContent)
 Vue.component('g-footer', GFooter)
+Vue.component('g-toast', GToast)
+Vue.use(plugin)
 
 let vm = new Vue({
   el: '#app',
@@ -33,9 +37,15 @@ let vm = new Vue({
       name: '王五',
     }
   },
+  mounted() {
+    // this.$toast()
+  },
   methods: {
     inputChange(e) {
       console.log('change', e.target.value)
+    },
+    showToast() {
+      this.$toast('我是Toast')
     },
   },
 })
