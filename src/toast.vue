@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-06-03 21:15:50
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-03 22:33:16
+ * @LastEditTime: 2020-06-03 22:47:07
  * @Description: 
 -->
 <template>
@@ -12,14 +12,32 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-
-// Vue.prototype.$toast = function () {
-//   alert('This is a toast !')
-// }  侵入性太强
-
 export default {
-  name: 'GuruToast'
+  name: 'GuruToast',
+  props: {
+    autoClose: {
+      type: Boolean,
+      default: true
+    },
+    duration: {
+      type: [Number, String],
+      default: 3000
+    }
+  },
+  mounted () {
+    if (this.autoClose) {
+      setTimeout(() => {
+        this.close()
+      }, Number(this.duration));
+    }
+  },
+  methods: {
+    close () {
+      this.$el.remove()
+      // document.body.removeChild(this.$el)
+      this.$destory()
+    }
+  }
 }
 </script>
 
