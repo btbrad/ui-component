@@ -44,7 +44,7 @@ let vm = new Vue({
     inputChange(e) {
       console.log('change', e.target.value)
     },
-    showToast() {
+    showToast(pos) {
       this.$toast('我是Toast11111111111111111111', {
         autoClose: false,
         toastOptions: {
@@ -53,7 +53,7 @@ let vm = new Vue({
             alert('toast关闭了!')
           },
         },
-        position: 'middle',
+        position: pos,
       })
     },
   },

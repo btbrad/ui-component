@@ -2,20 +2,22 @@
  * @Author: btbrad
  * @Date: 2020-06-03 21:15:50
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-04 22:00:28
+ * @LastEditTime: 2020-06-04 22:31:43
  * @Description: 
 -->
 <template>
-  <div class="toast"
+  <div class="wrapper"
        :class="toastClasses">
-    <slot v-if="!enableHtml"></slot>
-    <div v-else
-         v-html="$slots.default[0]"></div>
-    <span class="closeButton"
-          v-if="closeButton"
-          @click="handleClose">
-      {{ closeButton.text }}
-    </span>
+    <div class="toast">
+      <slot v-if="!enableHtml"></slot>
+      <div v-else
+           v-html="$slots.default[0]"></div>
+      <span class="closeButton"
+            v-if="closeButton"
+            @click="handleClose">
+        {{ closeButton.text }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -89,14 +91,57 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     opacity: 1;
   }
 }
-.toast {
-  animation: fade-in 1s;
-  height: $toast-height;
-  // border: 1px solid red;
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.wrapper {
   position: fixed;
-  top: 0;
   left: 50%;
   transform: translateX(-50%);
+  &.position-top {
+    top: 0;
+    .toast {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      animation: slide-down 1s;
+    }
+  }
+  &.position-bottom {
+    bottom: 0 !important;
+    .toast {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      animation: slide-up 1s;
+    }
+  }
+  &.position-middle {
+    top: 50%;
+    left: 50%;
+    animation: fade-in 1s;
+    transform: translate(-50%, -50%);
+  }
+}
+.toast {
+  animation: slide-in 1s;
+  height: $toast-height;
+  // border: 1px solid red;
   font-size: $font-size;
   line-height: 1.8em;
   display: flex;
@@ -118,17 +163,6 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
     cursor: pointer;
-  }
-  &.position-top {
-    top: 0;
-  }
-  &.position-bottom {
-    bottom: 0;
-  }
-  &.position-middle {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 </style>
