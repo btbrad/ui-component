@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-06-03 21:15:50
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-04 21:36:45
+ * @LastEditTime: 2020-06-04 22:00:28
  * @Description: 
 -->
 <template>
@@ -67,6 +67,7 @@ export default {
       this.$el.remove()
       // document.body.removeChild(this.$el)
       this.$destroy()
+      this.$emit('close')
     },
     handleClose () {
       this.close()
@@ -80,7 +81,16 @@ export default {
 $font-size: 14px;
 $toast-height: 40px;
 $toast-bg: rgba(0, 0, 0, 0.75);
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .toast {
+  animation: fade-in 1s;
   height: $toast-height;
   // border: 1px solid red;
   position: fixed;
