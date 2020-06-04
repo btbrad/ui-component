@@ -2,12 +2,17 @@
  * @Author: btbrad
  * @Date: 2020-06-03 21:15:50
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-03 22:47:07
+ * @LastEditTime: 2020-06-04 20:44:49
  * @Description: 
 -->
 <template>
   <div class="toast">
     <slot></slot>
+    <span class="closeButton"
+          v-if="closeButton"
+          @click="handleClose">
+      {{ closeButton.text }}
+    </span>
   </div>
 </template>
 
@@ -22,6 +27,15 @@ export default {
     duration: {
       type: [Number, String],
       default: 3000
+    },
+    closeButton: {
+      type: Object,
+      default: () => ({
+        text: '关闭',
+        callback: (toast) => {
+          toast.close()
+        }
+      })
     }
   },
   mounted () {
@@ -35,7 +49,11 @@ export default {
     close () {
       this.$el.remove()
       // document.body.removeChild(this.$el)
-      this.$destory()
+      this.$destroy()
+    },
+    handleClose () {
+      this.close()
+      this.closeButton.callback()
     }
   }
 }
@@ -61,5 +79,18 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   color: #fff;
   padding: 0 16px;
   border-radius: 4px;
+  .closeButton {
+    display: inline-block;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding-left: 16px;
+    border-left: 1px solid #fff;
+    margin-left: 16px;
+    line-height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
 }
 </style>
