@@ -45,7 +45,16 @@ let vm = new Vue({
       console.log('change', e.target.value)
     },
     showToast() {
-      this.$toast('我是Toast')
+      this.$toast('我是Toast11111111111111111111', {
+        autoClose: false,
+        toastOptions: {
+          text: 'ok',
+          callback: () => {
+            alert('toast关闭了!')
+          },
+        },
+        position: 'middle',
+      })
     },
   },
 })

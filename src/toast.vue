@@ -2,12 +2,15 @@
  * @Author: btbrad
  * @Date: 2020-06-03 21:15:50
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-04 20:44:49
+ * @LastEditTime: 2020-06-04 21:36:45
  * @Description: 
 -->
 <template>
-  <div class="toast">
-    <slot></slot>
+  <div class="toast"
+       :class="toastClasses">
+    <slot v-if="!enableHtml"></slot>
+    <div v-else
+         v-html="$slots.default[0]"></div>
     <span class="closeButton"
           v-if="closeButton"
           @click="handleClose">
@@ -32,10 +35,19 @@ export default {
       type: Object,
       default: () => ({
         text: '关闭',
-        callback: (toast) => {
-          toast.close()
-        }
+        callback: () => { }
       })
+    },
+    enableHtml: {
+      type: Boolean,
+      default: false
+    },
+    position: {
+      type: String,
+      default: 'top',
+      validator (value) {
+        return ['top', 'bottom', 'middle'].includes(value)
+      }
     }
   },
   mounted () {
@@ -43,6 +55,11 @@ export default {
       setTimeout(() => {
         this.close()
       }, Number(this.duration));
+    }
+  },
+  computed: {
+    toastClasses () {
+      return [`position-${this.position}`]
     }
   },
   methods: {
@@ -91,6 +108,17 @@ $toast-bg: rgba(0, 0, 0, 0.75);
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+  &.position-top {
+    top: 0;
+  }
+  &.position-bottom {
+    bottom: 0;
+  }
+  &.position-middle {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 </style>
