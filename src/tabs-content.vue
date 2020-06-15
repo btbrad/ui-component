@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:17:24
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 21:37:09
+ * @LastEditTime: 2020-06-15 22:19:12
  * @Description: 
 --> 
 <template>
@@ -13,7 +13,8 @@
 
 <script>
 export default {
-  name: 'GuruTabsContent'
+  name: 'GuruTabsContent',
+  inject: ['eventBus']
 }
 </script>
 

@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:13:58
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 21:46:10
+ * @LastEditTime: 2020-06-15 22:13:36
  * @Description: 
 -->
 <template>
@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'GuruTabs',
   props: {
@@ -25,6 +27,16 @@ export default {
       validator (value) {
         return ['horizontal', 'vertical'].indexOf(value) >= 0
       }
+    }
+  },
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide () {
+    return {
+      eventBus: this.eventBus
     }
   },
   created () {

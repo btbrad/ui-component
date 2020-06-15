@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:18:14
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 21:37:58
+ * @LastEditTime: 2020-06-15 22:17:01
  * @Description: 
 --> 
 <template>
@@ -13,7 +13,13 @@
 
 <script>
 export default {
-  name: 'GuruTabsPane'
+  name: 'GuruTabsPane',
+  inject: ['eventBus'],
+  created () {
+    this.eventBus.$on('update:selected', (name) => {
+      console.log(name)
+    })
+  }
 }
 </script>
 
