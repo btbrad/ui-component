@@ -12,6 +12,11 @@ import GContent from './content.vue'
 import GFooter from './footer.vue'
 import GToast from './toast.vue'
 import plugin from './plugin'
+import Tabs from './tabs.vue'
+import TabsNav from './tabs-nav.vue'
+import TabsContent from './tabs-content.vue'
+import TabsPane from './tabs-pane.vue'
+import TabsItem from './tabs-item.vue'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -25,6 +30,11 @@ Vue.component('g-sider', GSider)
 Vue.component('g-content', GContent)
 Vue.component('g-footer', GFooter)
 Vue.component('g-toast', GToast)
+Vue.component('g-tabs', Tabs)
+Vue.component('g-tabs-nav', TabsNav)
+Vue.component('g-tabs-content', TabsContent)
+Vue.component('g-tabs-pane', TabsPane)
+Vue.component('g-tabs-item', TabsItem)
 Vue.use(plugin)
 
 let vm = new Vue({
@@ -35,6 +45,7 @@ let vm = new Vue({
       loading2: true,
       loading3: false,
       name: '王五',
+      selectedTab: 'sports',
     }
   },
   mounted() {
@@ -65,18 +76,18 @@ const expect = chai.expect
 
 // 单元测试
 // 测试icon是否设置成功
-{
-  const Constructor = Vue.extend(Button)
-  const button = new Constructor({
-    propsData: {
-      icon: 'settings',
-    },
-  })
-  button.$mount('#test')
+// {
+//   const Constructor = Vue.extend(Button)
+//   const button = new Constructor({
+//     propsData: {
+//       icon: 'settings',
+//     },
+//   })
+//   button.$mount('#test')
 
-  let useElement = button.$el.querySelector('use')
-  expect(useElement.getAttribute('xlink:href')).to.eq('#i-settings')
-}
+//   let useElement = button.$el.querySelector('use')
+//   expect(useElement.getAttribute('xlink:href')).to.eq('#i-settings')
+// }
 // 测试loading  loading会覆盖其他icon
 {
   const Constructor = Vue.extend(Button)
