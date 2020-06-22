@@ -21,7 +21,10 @@ export default {
   inject: ['eventBus'],
   created() {
     this.eventBus.$on('update:selected', (name, vm) => {
-      console.log(name, vm.$el)
+      let {width, height, top, left} = vm.$el.getBoundingClientRect()
+      console.log(width, height, top, left)
+      this.$refs.line.style.width = width+'px'
+      this.$refs.line.style.left = `${left}px`
     })
   }
 }
@@ -30,22 +33,27 @@ export default {
 <style scoped lang="scss">
 $tab-height: 40px;
 $blue: blue;
+$border-color: #ddd;
 .tabs-nav {
   display: flex;
   // min-height: $tab-height;
   height: $tab-height;
   justify-content: flex-start;
   // align-items: center;
-  border: 1px solid red;
+  // border: 1px solid red;
   position: relative;
+  border-bottom: 1px solid $border-color;
   > .line {
     position: absolute;
     bottom: 0;
-    border-bottom: 1px solid $blue;
-    width: 100px;
+    border-bottom: 2px solid $blue;
+    // width: 100px;
+    transition: all 1s;
   }
   > .actions-wrapper {
     margin-left: auto; //牛批
+    display: flex;
+    align-items: center;
   }
 }
 </style>
