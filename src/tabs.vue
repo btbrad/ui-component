@@ -2,11 +2,11 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:13:58
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 22:13:36
+ * @LastEditTime: 2020-06-16 22:03:09
  * @Description: 
 -->
 <template>
-  <div>
+  <div class="tabs">
     <slot></slot>
   </div>
 </template>
@@ -39,8 +39,8 @@ export default {
       eventBus: this.eventBus
     }
   },
-  created () {
-    // this.$emit('update:selected', 'xxxxx')
+  mounted () {
+    this.eventBus.$emit('update:selected', this.selected)
   }
 }
 </script>

@@ -2,7 +2,7 @@
  * @Author: btbrad
  * @Date: 2020-05-27 19:29:40
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 21:50:09
+ * @LastEditTime: 2020-06-16 21:46:24
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -111,7 +111,7 @@
       <!-- <h2>Tab组件</h2> -->
       <g-tabs :selected.sync="selectedTab">
         <g-tabs-nav>
-          <template>
+          <template slot="actions">
             <g-button>设置</g-button>
           </template>
           <g-tabs-item name="beauty">

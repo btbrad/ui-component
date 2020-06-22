@@ -2,13 +2,15 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:15:00
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 22:19:05
+ * @LastEditTime: 2020-06-16 21:47:42
  * @Description: 
 --> 
 <template>
-  <div>
+  <div class="tabs-nav">
     <slot></slot>
-    <slot name="actions"></slot>
+    <div class="actions-wrapper">
+      <slot name="actions"></slot>
+    </div>
   </div>
 </template>
 
@@ -20,4 +22,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$tab-height: 40px;
+.tabs-nav {
+  display: flex;
+  min-height: $tab-height;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid red;
+  > .actions-wrapper {
+    margin-left: auto; //牛批
+  }
+}
 </style>

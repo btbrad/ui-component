@@ -2,11 +2,11 @@
  * @Author: btbrad
  * @Date: 2020-06-15 21:17:24
  * @LastEditors: btbrad
- * @LastEditTime: 2020-06-15 22:19:12
+ * @LastEditTime: 2020-06-16 22:02:56
  * @Description: 
 --> 
 <template>
-  <div>
+  <div class="tabs-content">
     <slot></slot>
   </div>
 </template>
