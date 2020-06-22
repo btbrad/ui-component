@@ -33,7 +33,8 @@ export default {
   computed: {
     classes () {
       return {
-        'active': this.active
+        'active': this.active,
+        'disabled': this.disabled
       }
     }
   },
@@ -49,6 +50,9 @@ export default {
   },
   methods: {
     switchTab () {
+      if (this.disabled) {
+        return
+      }
       this.eventBus.$emit('update:selected', this.name, this)
     }
   }
@@ -57,6 +61,7 @@ export default {
 
 <style scoped lang="scss">
 $blue: blue;
+$disabled-text-color: gray;
 .tabs-item {
   // flex-grow: 1;
   cursor: pointer;
@@ -68,6 +73,9 @@ $blue: blue;
   &.active {
     color: $blue;
     font-weight: bold;
+  }
+  &.disabled {
+    color: $disabled-text-color;
   }
 }
 </style>
