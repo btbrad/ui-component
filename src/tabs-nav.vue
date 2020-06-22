@@ -25,7 +25,8 @@ export default {
 $tab-height: 40px;
 .tabs-nav {
   display: flex;
-  min-height: $tab-height;
+  // min-height: $tab-height;
+  height: $tab-height;
   justify-content: flex-start;
   align-items: center;
   border: 1px solid red;
