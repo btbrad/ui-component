@@ -7,7 +7,7 @@
 --> 
 <template>
   <div class="tabs-item"
-       @click="xxx">
+       @click="switchTab" :class="classes">
     <slot></slot>
   </div>
 </template>
@@ -30,6 +30,13 @@ export default {
       required: true
     }
   },
+  computed: {
+    classes () {
+      return {
+        'active': this.active
+      }
+    }
+  },
   data () {
     return {
       active: false
@@ -37,16 +44,17 @@ export default {
   },
   created () {
     this.eventBus.$on('update:selected', (name) => {
-      if (name === this.name) {
-        console.log(`我${name}被选中了`)
-      } else {
-        console.log(`我${this.name}没被选中了`)
-      }
+      // if (name === this.name) {
+      //   console.log(`我${name}被选中了`)
+      // } else {
+      //   console.log(`我${this.name}没被选中了`)
+      // }
+      this.active = name === this.name
     })
   },
   methods: {
-    xxx () {
-      // this.eventBus.$emit('update:selected', this.name)
+    switchTab () {
+      this.eventBus.$emit('update:selected', this.name)
     }
   }
 }
@@ -58,5 +66,8 @@ export default {
   cursor: pointer;
   flex-shrink: 0;
   padding: 0 1em;
+  &.active {
+    background: red;
+  }
 }
 </style>
