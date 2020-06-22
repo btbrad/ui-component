@@ -44,34 +44,30 @@ export default {
   },
   created () {
     this.eventBus.$on('update:selected', (name) => {
-      // if (name === this.name) {
-      //   console.log(`我${name}被选中了`)
-      // } else {
-      //   console.log(`我${this.name}没被选中了`)
-      // }
       this.active = name === this.name
     })
   },
   methods: {
     switchTab () {
-      this.eventBus.$emit('update:selected', this.name)
+      this.eventBus.$emit('update:selected', this.name, this)
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
+$blue: blue;
 .tabs-item {
   // flex-grow: 1;
   cursor: pointer;
   flex-shrink: 0;
   padding: 0 1em;
   height: 100%;
-  border: 1px solid green;
   display: flex;
   align-items: center;
   &.active {
-    background: red;
+    color: $blue;
+    font-weight: bold;
   }
 }
 </style>

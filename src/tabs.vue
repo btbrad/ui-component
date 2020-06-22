@@ -40,7 +40,15 @@ export default {
     }
   },
   mounted () {
-    this.eventBus.$emit('update:selected', this.selected)
+    this.$children.forEach(vm => {
+      if (vm.$options.name === 'GuruTabsNav') {
+        vm.$children.forEach(item => {
+          if (item.$options.name === 'GuruTabsItem' && item.name === this.selected) {
+            this.eventBus.$emit('update:selected', this.selected, item)
+          }
+        })
+      }
+    })
   }
 }
 </script>
