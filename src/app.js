@@ -17,6 +17,7 @@ import TabsNav from './tabs-nav.vue'
 import TabsContent from './tabs-content.vue'
 import TabsPane from './tabs-pane.vue'
 import TabsItem from './tabs-item.vue'
+import Popover from './popover.vue'
 
 Vue.component('g-button', Button)
 Vue.component('g-icon', Icon)
@@ -35,6 +36,7 @@ Vue.component('g-tabs-nav', TabsNav)
 Vue.component('g-tabs-content', TabsContent)
 Vue.component('g-tabs-pane', TabsPane)
 Vue.component('g-tabs-item', TabsItem)
+Vue.component('g-popover', Popover)
 Vue.use(plugin)
 
 let vm = new Vue({
