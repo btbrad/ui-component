@@ -111,7 +111,7 @@ export default {
           left: left + window.scrollX
         },
         right: {
-          top: top + window.scrollY + (height - contentHeight) / 2,
+          top: top + window.scrollY + height / 2,
           left: left + window.scrollX + width
         },
       }
@@ -221,6 +221,7 @@ $border-radius: 4px;
       }
     }
     &.position-right {
+      transform: translate(0, -50%);
       margin-left: 10px;
       &::before, &::after {
         transform: translateY(-50%);
@@ -235,6 +236,17 @@ $border-radius: 4px;
         border-right-color: white;
         border-left: none;
         right: calc(100% - 1px);
+      }
+      .arrow-down {
+        top: 50%;
+        left: -36px !important;
+        right: 100% !important;
+        transform: translate(100%, -50%) rotate(90deg) !important;
+        &::after {
+          top: 0;
+          right: 0;
+          transform: translateX(-100%);
+        }
       }
     }
   .content-wrapper {
