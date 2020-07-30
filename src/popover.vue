@@ -51,6 +51,14 @@ export default {
       this.bindEvent()
     })
   },
+  beforeDestroy() {
+    /**
+     * 收回body中的content
+     */
+    const {content, popover} = this.$refs
+    if(!content){return}
+    popover.appendChild(content)
+  },
   methods: {
     show() {
       this.visible = true
