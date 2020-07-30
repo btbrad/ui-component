@@ -56,10 +56,25 @@ export default {
       this.visible = true
       this.$nextTick(() => {
         this.placeContent()
+        document.addEventListener('mouseover', this.documentHandler)
       })
     },
     hide() {
       this.visible = false
+    },
+    documentHandler(event) {
+      let dom = event.target
+      event.stopPropagation()
+      if (this.$refs.popover && this.$refs.popover.contains(dom)) {
+        return
+      }
+      if (this.$refs.popover &&
+        (this.$refs.popover === event.target || this.$refs.popover.contains(event.target))
+      ) { return }
+      if (this.$refs.content &&
+        (this.$refs.content === event.target || this.$refs.content.contains(event.target))
+      ) { return }
+      this.hide()
     },
     bindEvent() {
       if (this.trigger === 'hover') {
@@ -83,38 +98,10 @@ export default {
         this.$refs.trigger.addEventListener('mouseleave', () => {
           this.hide()
         })
-        document.addEventListener('mouseover', (event) => {
-          let dom = event.target
-          event.stopPropagation()
-          if (this.$refs.popover && this.$refs.popover.contains(dom)) {
-            return
-          }
-          if (this.$refs.popover &&
-            (this.$refs.popover === event.target || this.$refs.popover.contains(event.target))
-          ) { return }
-          if (this.$refs.content &&
-            (this.$refs.content === event.target || this.$refs.content.contains(event.target))
-          ) { return }
-          this.hide()
-        })
       }
       if (this.trigger === 'click') {
         this.$nextTick(() => {
           this.$refs.trigger.addEventListener('click', this.toggleVisiblity)
-        })
-        document.addEventListener('click', (event) => {
-          let dom = event.target
-          event.stopPropagation()
-          if (this.$refs.popover && this.$refs.popover.contains(dom)) {
-            return
-          }
-          if (this.$refs.popover &&
-            (this.$refs.popover === event.target || this.$refs.popover.contains(event.target))
-          ) { return }
-          if (this.$refs.content &&
-            (this.$refs.content === event.target || this.$refs.content.contains(event.target))
-          ) { return }
-          this.hide()
         })
       }
     },
@@ -122,6 +109,7 @@ export default {
       this.visible = !this.visible
       this.$nextTick(() => {
         this.visible && this.placeContent()
+        document.addEventListener('click', this.documentHandler)
       })
     },
     placeContent() {
