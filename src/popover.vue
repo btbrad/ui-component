@@ -107,7 +107,7 @@ export default {
         top: {top: top + window.scrollY, left: left + window.scrollX + width / 2 },
         bottom: {top: top + height + window.scrollY, left: left + window.scrollX + width / 2},
         left: {
-          top: top + window.scrollY + (height - contentHeight) / 2,
+          top: top + window.scrollY + height / 2,
           left: left + window.scrollX
         },
         right: {
@@ -192,7 +192,7 @@ $border-radius: 4px;
       }
     }
     &.position-left {
-      transform: translateX(-100%);
+      transform: translate(-100%, -50%);
       margin-left: -10px;
       &::before, &::after {
         transform: translateY(-50%);
@@ -207,6 +207,17 @@ $border-radius: 4px;
         border-left-color: white;
         border-right: none;
         left: calc(100% - 1px);
+      }
+      .arrow-down {
+        top: 50%;
+        right: 0 !important;
+        left: calc(100% - 24px) !important;
+        transform: translate(100%, -50%) rotate(-90deg) !important;
+        &::after {
+          top: 0;
+          right: 0;
+          transform: translateX(-100%);
+        }
       }
     }
     &.position-right {
