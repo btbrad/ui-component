@@ -46,6 +46,7 @@ export default {
     }
   },
   mounted() {
+    // this.show()
     this.$nextTick(() => {
       this.bindEvent()
     })
@@ -103,22 +104,22 @@ export default {
       let {width, height, top, left} = this.$refs.trigger.getBoundingClientRect()
       let {height: contentHeight} = this.$refs.content.getBoundingClientRect()
       let positions = {
-        top: {top: top + window.scrollY, left: left + window.scrollX + width / 2,},
-          bottom: {top: top + height + window.scrollY, left: left + window.scrollX},
-          left: {
-            top: top + window.scrollY + (height - contentHeight) / 2,
-            left: left + window.scrollX
-          },
-          right: {
-            top: top + window.scrollY + (height - contentHeight) / 2,
-            left: left + window.scrollX + width
-          },
-        }
-        this.$refs.content.style.left = positions[this.position].left + 'px'
-        this.$refs.content.style.top = positions[this.position].top + 'px'
-        let { width: width1, height: height1 } = this.$refs['content-wrapper'].getBoundingClientRect()
-        this.$refs.content.style.width = width1 + 'px'
-        this.$refs.content.style.height = height1 + 'px'
+        top: {top: top + window.scrollY, left: left + window.scrollX + width / 2 },
+        bottom: {top: top + height + window.scrollY, left: left + window.scrollX + width / 2},
+        left: {
+          top: top + window.scrollY + (height - contentHeight) / 2,
+          left: left + window.scrollX
+        },
+        right: {
+          top: top + window.scrollY + (height - contentHeight) / 2,
+          left: left + window.scrollX + width
+        },
+      }
+      this.$refs.content.style.left = positions[this.position].left + 'px'
+      this.$refs.content.style.top = positions[this.position].top + 'px'
+      let { width: width1, height: height1 } = this.$refs['content-wrapper'].getBoundingClientRect()
+      this.$refs.content.style.width = width1 + 'px'
+      this.$refs.content.style.height = height1 + 'px'
 
     }
   }
@@ -147,6 +148,7 @@ $border-radius: 4px;
   max-width: 20em;
   word-break: break-all;
   height: auto;
+  background: #fff;
   &.position-top {
       transform: translate(-50%, -100%);
       margin-top: -10px;
@@ -166,6 +168,7 @@ $border-radius: 4px;
     }
     &.position-bottom {
       margin-top: 10px;
+      transform: translateX(-50%);
       &::before, &::after {
         left: 10px;
       }
@@ -178,6 +181,14 @@ $border-radius: 4px;
         border-top: none;
         border-bottom-color: white;
         bottom: calc(100% - 1px);
+      }
+      .arrow-down {
+        top: 0;
+        transform: translate(-50%, -100%) rotate(180deg) !important;
+        &::after {
+          top: 0;
+          transform: translateX(-100%);
+        }
       }
     }
     &.position-left {
