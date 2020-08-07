@@ -39,7 +39,6 @@ export default {
       border-top: none;
     }
     .title {
-      // border-bottom: 1px solid #ccc;
       height: 40px;
       display: flex;
       align-items: center;
