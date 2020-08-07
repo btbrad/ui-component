@@ -34,6 +34,9 @@ export default {
       selected: this.selected
     }
     this.eventBus.$emit('change-select', config)
+    this.eventBus.$on('change-select', ({type, selected}) => {
+      this.$emit('update:selected', selected)
+    })
   }
 }
 </script>

@@ -53,7 +53,7 @@ let vm = new Vue({
       loading3: false,
       name: '王五',
       selectedTab: 'sports',
-      selectedCollapse: ['1', '2']
+      selectedCollapse: '2'
     }
   },
   mounted() {
