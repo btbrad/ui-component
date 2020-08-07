@@ -1,9 +1,9 @@
 <template>
   <div class="collapse-item">
-    <div class="title">
+    <div class="title" @click="handleClick">
       {{ title }}
     </div>
-    <div class="content">
+    <div class="content" v-if="visible">
       <slot></slot>
     </div>
   </div>
@@ -17,6 +17,16 @@ export default {
       type: String,
       default: ''
     }
+  },
+  data() {
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    handleClick() {
+      this.visible = !this.visible
+    }
   }
 }
 </script>
@@ -25,6 +35,9 @@ export default {
   .collapse-item {
     width: 100%;
     border-top: 1px solid #ccc;
+    &:first-of-type {
+      border-top: none;
+    }
     .title {
       // border-bottom: 1px solid #ccc;
       height: 40px;
@@ -35,6 +48,7 @@ export default {
         border-top: none;
       }
       background: #fff;
+      cursor: pointer;
     } 
     .content {
       min-height: 40px;
