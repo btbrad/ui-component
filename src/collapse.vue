@@ -6,7 +6,35 @@
 
 <script>
 export default {
-  name: 'GuruCollapse'
+  name: 'GuruCollapse',
+  provide() {
+    return {
+      eventBus: this.eventBus
+    }
+  },
+  props: {
+    type: {
+      type: String,
+      default: 'single',
+      validator: (val) => ['single', 'multiple'].indexOf(val) !== -1
+    },
+    selected: {
+      type: String,
+      default: ''
+    }
+  },
+  data() {
+    return {
+      eventBus: this
+    }
+  },
+  mounted() {
+    let config = {
+      type: this.type,
+      selected: this.selected
+    }
+    this.eventBus.$emit('change-select', config)
+  }
 }
 </script>
 

@@ -12,21 +12,49 @@
 <script>
 export default {
   name: 'GuruCollapseItem',
+  inject: ['eventBus'],
   props: {
     title: {
+      type: String,
+      default: ''
+    },
+    name: {
       type: String,
       default: ''
     }
   },
   data() {
     return {
-      visible: false
+      visible: false,
+      // type: 'single'
     }
   },
   methods: {
     handleClick() {
-      this.visible = !this.visible
+      if (this.visible) {
+        if (this.type === 'single') {
+          this.eventBus.$emit('change-select', {
+            type: 'single',
+            selected: ''
+          })
+        }
+      } else {
+        if (this.type === 'single') {
+          this.eventBus.$emit('change-select', {
+            type: 'single',
+            selected: this.name
+          })
+        }
+      }
     }
+  },
+  mounted() {
+    this.eventBus.$on('change-select', ({ type, selected }) => {
+      this.type = type
+      if (type === 'single') {
+        this.visible = this.name === selected
+      }
+    })
   }
 }
 </script>
