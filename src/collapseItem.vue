@@ -37,12 +37,26 @@ export default {
             type: 'single',
             selected: ''
           })
+        } else if (this.type === 'multiple') {
+          let sel = this.selected.filter(item => item !== this.name)
+          this.eventBus.$emit('change-select', {
+            type: 'multiple',
+            selected: sel
+          })
         }
       } else {
         if (this.type === 'single') {
           this.eventBus.$emit('change-select', {
             type: 'single',
             selected: this.name
+          })
+        } else if (this.type === 'multiple') {
+          let sel = JSON.parse(JSON.stringify(this.selected))
+          sel.push(this.name)
+          console.log(sel)
+          this.eventBus.$emit('change-select', {
+            type: 'multiple',
+            selected: sel
           })
         }
       }
@@ -51,8 +65,12 @@ export default {
   mounted() {
     this.eventBus.$on('change-select', ({ type, selected }) => {
       this.type = type
+      this.selected = selected
       if (type === 'single') {
         this.visible = this.name === selected
+      } else if (type === 'multiple') {
+        console.log(selected)
+        this.visible = selected.indexOf(this.name) !== -1
       }
     })
   }

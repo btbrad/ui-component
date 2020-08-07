@@ -19,7 +19,7 @@ export default {
       validator: (val) => ['single', 'multiple'].indexOf(val) !== -1
     },
     selected: {
-      type: String,
+      type: [String, Array],
       default: ''
     }
   },
