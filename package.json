@@ -1,53 +1,37 @@
 {
   "name": "guru-ui",
   "version": "0.0.3",
-  "description": "This is ui-component for vue.",
-  "main": "dist/index.js",
+  "private": true,
   "scripts": {
-    "dev": "parcel --no-cache ./index.html",
-    "dev:test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
-    "build:index": "parcel build index.js --no-cache --no-minify",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/btbrad/ui-component.git"
-  },
-  "keywords": [
-    "vue",
-    "ui"
-  ],
-  "author": "btbrad",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/btbrad/ui-component/issues"
-  },
-  "homepage": "https://github.com/btbrad/ui-component#readme",
   "dependencies": {
-    "vue": "^2.6.11",
-    "vue-hot-reload-api": "^2.3.4"
+    "core-js": "^2.5.7",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.2",
-    "chai": "^4.2.0",
-    "chai-spies": "^1.0.0",
-    "karma": "^5.0.5",
-    "karma-chai": "^0.1.0",
-    "karma-chai-spies": "^0.1.4",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-mocha": "^2.0.1",
-    "karma-sinon-chai": "^2.0.2",
-    "mocha": "^7.1.2",
-    "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.5",
-    "sinon": "^9.0.2",
-    "sinon-chai": "^3.5.0",
-    "vue-template-compiler": "^2.6.11",
-    "vuepress": "^1.5.3"
+    "@vue/babel-preset-app": "^4.5.3",
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-plugin-unit-mocha": "^3.12.0",
+    "@vue/cli-service": "^3.12.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "cache-loader": "^4.1.0",
+    "chai": "^4.1.2",
+    "sass": "^1.19.0",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.common.js"
-  }
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
