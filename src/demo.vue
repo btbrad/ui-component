@@ -22,6 +22,11 @@
 <script>
 export default {
   name: 'Demo',
+  data() {
+    return {
+      selectedCollapse: ''
+    }
+  }
 }
 </script>
 
