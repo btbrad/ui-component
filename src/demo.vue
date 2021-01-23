@@ -15,6 +15,8 @@
         <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
         <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
       </g-collapse>
+      <br />
+      <g-input value="张三"></g-input>
     </div>
   </div>
 </template>
