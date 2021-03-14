@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <p v-for="(item, index) in source" :key="index" style="padding-left: 20px;border: 1px solid #f40;">
-      <span>{{ item && item.name }}</span>
+  <div class="cascader-item">
+    <div v-for="(item, index) in source" :key="index">
+      <p>{{ item && item.name }}</p>
       <guru-cascader-item v-if="item.children" :source="item.children" />
-    </p>
+    </div>
   </div>
 </template>
 
@@ -20,5 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.cascader-item {
+  width: 120px;
+}
 </style>

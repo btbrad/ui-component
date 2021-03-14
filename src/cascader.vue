@@ -1,9 +1,9 @@
 <template>
   <div class="cascader">
-    <div class="trigger">
+    <div class="trigger" @click="popVisible = !popVisible">
       <slot></slot>
     </div>
-    <div class="popover">
+    <div class="popover" v-show="popVisible">
       <g-cascader-item :source="source" />
     </div>
   </div>
@@ -17,10 +17,25 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  data() {
+    return {
+      popVisible: false
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.cascader {
+  .trigger {
+    width: 120px;
+    height: 32px;
+    border: 1px solid #f40;
+  }
+  .popover {
+    height: 200px;
+    border: 1px solid #f40;
+  }
+}
 </style>
