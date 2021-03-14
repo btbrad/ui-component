@@ -16,7 +16,7 @@
         <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
       </g-collapse>
       <br />
-      <g-input value="张三"></g-input>
+      <g-cascader :source="source"></g-cascader>
     </div>
   </div>
 </template>
@@ -26,7 +26,47 @@ export default {
   name: 'Demo',
   data() {
     return {
-      selectedCollapse: ''
+      selectedCollapse: '',
+      source: [
+        {
+          name: '安徽',
+          children: [
+            {
+              name: '阜阳',
+              children: [
+                {
+                  name: '颍州'
+                },
+                {
+                  name: '颍东'
+                },
+                {
+                  name: '颍泉'
+                }
+              ]
+            },
+            {
+              name: '六安'
+            }
+          ]
+        },
+        {
+          name: '吉林',
+          children: [
+            {
+              name: '长春',
+              children: [
+                {
+                  name: '南关'
+                },
+                {
+                  name: '宽城'
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   }
 }
