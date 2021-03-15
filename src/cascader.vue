@@ -31,20 +31,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'var';
+
 .cascader {
   position: relative;
   .trigger {
     width: 120px;
     height: 32px;
-    border: 1px solid #f40;
+    border: 1px solid #000;
   }
   .popover-wraper {
     position: absolute;
     top: 100%;
     left: 0;
-    height: 200px;
-    border: 1px solid #f40;
+    // height: 200px;
     background: #fff;
+    @extend .box-shadow
   }
 }
 </style>

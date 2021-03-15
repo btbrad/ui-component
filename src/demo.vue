@@ -16,7 +16,7 @@
         <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
       </g-collapse>
       <br />
-      <g-cascader :source="source" popoverHeight="300px"></g-cascader>
+      <g-cascader :source="source" popoverHeight="200px"></g-cascader>
     </div>
   </div>
 </template>

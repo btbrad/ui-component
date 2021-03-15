@@ -2,7 +2,8 @@
   <div class="cascader-item" :style="`height: ${height}`">
     <div class="left">
       <div v-for="(item, index) in source" :key="index" @click="leftSelected = item">
-        <p>{{ item && item.name }}</p>
+        <span class="label">{{ item && item.name }}</span>
+        <Icon class="icon" v-if="item.children" name="right"></Icon> 
       </div>  
     </div>
     <div class="right" v-if="rightItems">
@@ -12,8 +13,13 @@
 </template>
 
 <script>
+import Icon from './icon'
+
 export default {
   name: 'GuruCascaderItem',
+  components: {
+    Icon
+  },
   props: {
     source: {
       type: Array,
@@ -42,6 +48,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import 'var';
 .cascader-item {
   display: flex;
   align-items: flex-start;
@@ -49,9 +56,17 @@ export default {
   height: 100px;
   .left {
     height: 100%;
+    padding: .3em 1em; 
+    .label {
+      padding: .5em 0.1em; 
+    }
   }
   .right {
+    border-left: 1px solid $border-color;
     height: 100%;
+  }
+  .icon {
+    transform: scale(0.8) translateY(3px);
   }
 }
 </style>
