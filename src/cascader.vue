@@ -3,8 +3,8 @@
     <div class="trigger" @click="popVisible = !popVisible">
       <slot></slot>
     </div>
-    <div class="popover" v-show="popVisible">
-      <g-cascader-item :source="source" />
+    <div class="popover-wraper" v-show="popVisible">
+      <g-cascader-item :source="source" class="popover" :height="popoverHeight"/>
     </div>
   </div>
 </template>
@@ -16,6 +16,10 @@ export default {
     source: {
       type: Array,
       default: () => []
+    },
+    popoverHeight: {
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -28,14 +32,19 @@ export default {
 
 <style lang="scss" scoped>
 .cascader {
+  position: relative;
   .trigger {
     width: 120px;
     height: 32px;
     border: 1px solid #f40;
   }
-  .popover {
+  .popover-wraper {
+    position: absolute;
+    top: 100%;
+    left: 0;
     height: 200px;
     border: 1px solid #f40;
+    background: #fff;
   }
 }
 </style>
