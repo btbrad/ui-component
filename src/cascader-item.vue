@@ -58,6 +58,7 @@ export default {
       // this.$set(this.selected, this.level, item)
       const copy = JSON.parse(JSON.stringify(this.selected))
       copy[this.level] = item
+      copy.splice(this.level + 1)
       this.$emit('update:selected', copy)
     },
     onSelectedChange (newSelected) {
