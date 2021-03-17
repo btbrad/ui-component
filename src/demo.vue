@@ -10,13 +10,13 @@
     <h2>Guru-UI</h2>
     <hr />
     <div style="margin-top: 30px;margin-left: 200px;width: 500px;">
-      <g-collapse :selected.sync="selectedCollapse" type="single">
+      <!-- <g-collapse :selected.sync="selectedCollapse" type="single">
         <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
         <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
         <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
       </g-collapse>
-      <br />
-      <g-cascader :source="source" popoverHeight="200px"></g-cascader>
+      <br /> -->
+      <g-cascader :source="source" popoverHeight="200px" :selected.sync="selected"></g-cascader>
     </div>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
   name: 'Demo',
   data() {
     return {
-      selectedCollapse: '',
+      // selectedCollapse: '',
+      selected: [],
       source: [
         {
           name: '安徽',

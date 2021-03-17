@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
     <div class="popover-wraper" v-show="popVisible">
-      <g-cascader-item :source="source" class="popover" :height="popoverHeight"/>
+      <g-cascader-item :source="source" class="popover" :height="popoverHeight" :selected="selected" @update:selected="updateSelected"/>
     </div>
   </div>
 </template>
@@ -20,11 +20,21 @@ export default {
     popoverHeight: {
       type: String,
       default: ''
+    },
+    // 选中的项
+    selected: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
     return {
       popVisible: false
+    }
+  },
+  methods: {
+    updateSelected (newSelected) {
+      this.$emit('update:selected', newSelected)
     }
   }
 }

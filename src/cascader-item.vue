@@ -1,13 +1,13 @@
 <template>
   <div class="cascader-item" :style="`height: ${height}`">
     <div class="left">
-      <div v-for="(item, index) in source" :key="index" @click="leftSelected = item">
+      <div v-for="(item, index) in source" :key="index" @click="handleSelected(item)">
         <span class="label">{{ item && item.name }}</span>
         <Icon class="icon" v-if="item.children" name="right"></Icon> 
       </div>  
     </div>
     <div class="right" v-if="rightItems">
-      <guru-cascader-item :source="rightItems" :height="height" />
+      <guru-cascader-item :source="rightItems" :height="height" :selected="selected" :level="level + 1"/>
     </div>
   </div>
 </template>
@@ -28,6 +28,14 @@ export default {
     height: {
       type: String,
       default: ''
+    },
+    selected: {
+      type: Array,
+      default: () => []
+    },
+    level: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -42,6 +50,14 @@ export default {
       } else {
         return null
       }
+    }
+  },
+  methods: {
+    handleSelected (item) {
+      // this.$set(this.selected, this.level, item)
+      const copy = JSON.parse(JSON.stringify(this.selected))
+      copy[this.level] = item
+      this.$emit('update:selected', copy)
     }
   }
 }
@@ -58,7 +74,8 @@ export default {
     height: 100%;
     padding: .3em 1em; 
     .label {
-      padding: .5em 0.1em; 
+      padding: .5em 0.1em;
+      cursor: pointer; 
     }
   }
   .right {
