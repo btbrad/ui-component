@@ -78,6 +78,7 @@ export default {
   .left {
     height: 100%;
     padding: .3em 1em; 
+    overflow: auto;
     .label {
       padding: .5em 0.1em;
       cursor: pointer; 
