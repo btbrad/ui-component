@@ -84,7 +84,7 @@ export default {
     }
   }
   .right {
-    border-left: 1px solid $border-color;
+    border-left: 1px solid #eee;
     height: 100%;
   }
   .icon {
