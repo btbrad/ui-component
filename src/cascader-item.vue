@@ -7,7 +7,7 @@
       </div>  
     </div>
     <div class="right" v-if="rightItems">
-      <guru-cascader-item :source="rightItems" :height="height" :selected="selected" :level="level + 1"/>
+      <guru-cascader-item :source="rightItems" :height="height" :selected="selected" :level="level + 1" @update:selected="onSelectedChange"/>
     </div>
   </div>
 </template>
@@ -40,13 +40,14 @@ export default {
   },
   data() {
     return {
-      leftSelected: null
+      
     }
   },
   computed: {
     rightItems () {
-      if (this.leftSelected && this.leftSelected.children) {
-        return this.leftSelected.children
+      const currentSelected = this.selected && this.selected[this.level]
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children
       } else {
         return null
       }
@@ -58,6 +59,9 @@ export default {
       const copy = JSON.parse(JSON.stringify(this.selected))
       copy[this.level] = item
       this.$emit('update:selected', copy)
+    },
+    onSelectedChange (newSelected) {
+      this.$emit('update:selected', newSelected)
     }
   }
 }
