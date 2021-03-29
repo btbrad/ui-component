@@ -9,14 +9,18 @@
   <div>
     <h2>Guru-UI</h2>
     <hr />
-    <div style="margin-top: 30px;margin-left: 200px;width: 500px;">
-      <!-- <g-collapse :selected.sync="selectedCollapse" type="single">
-        <g-collapse-item title="标题1" name="1">内容1</g-collapse-item>
-        <g-collapse-item title="标题2" name="2">内容2</g-collapse-item>
-        <g-collapse-item title="标题3" name="3">内容3</g-collapse-item>
-      </g-collapse>
-      <br /> -->
-      <g-cascader :source="source" popoverHeight="200px" :selected.sync="selected"></g-cascader>
+    <div style="margin-top: 30px;margin-left: 200px;">
+      <g-slide ref="slide">
+        <g-slide-item>
+          <div class="box">1</div>
+        </g-slide-item>
+        <g-slide-item>
+          <div class="box">2</div>
+        </g-slide-item>
+        <g-slide-item>
+          <div class="box">3</div>
+        </g-slide-item>
+      </g-slide>
     </div>
   </div>
 </template>
@@ -26,51 +30,24 @@ export default {
   name: 'Demo',
   data() {
     return {
-      // selectedCollapse: '',
-      selected: [],
-      source: [
-        {
-          name: '安徽',
-          children: [
-            {
-              name: '阜阳',
-              children: [
-                {
-                  name: '颍州'
-                },
-                {
-                  name: '颍东'
-                },
-                {
-                  name: '颍泉'
-                }
-              ]
-            },
-            {
-              name: '六安'
-            }
-          ]
-        },
-        {
-          name: '吉林',
-          children: [
-            {
-              name: '长春',
-              children: [
-                {
-                  name: '南关'
-                },
-                {
-                  name: '宽城'
-                }
-              ]
-            }
-          ]
-        }
-      ]
     }
+  },
+  mounted () {
+    const first = this.$refs.slide.$children[0]
+    const second = this.$refs.slide.$children[1]
+    first.visible = true
+    setTimeout(() => {
+      first.visible = false
+      second.visible = true
+    }, 3000)
   }
 }
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.box {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f40;  
+}
+</style>
