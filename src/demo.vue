@@ -10,14 +10,14 @@
     <h2>Guru-UI</h2>
     <hr />
     <div style="margin-top: 30px;margin-left: 200px;">
-      <g-slide ref="slide">
-        <g-slide-item>
+      <g-slide ref="slide" :active="active">
+        <g-slide-item name="1">
           <div class="box">1</div>
         </g-slide-item>
-        <g-slide-item>
+        <g-slide-item name="2">
           <div class="box">2</div>
         </g-slide-item>
-        <g-slide-item>
+        <g-slide-item name="3">
           <div class="box">3</div>
         </g-slide-item>
       </g-slide>
@@ -30,15 +30,15 @@ export default {
   name: 'Demo',
   data() {
     return {
+      active: '1'
     }
   },
   mounted () {
-    const first = this.$refs.slide.$children[0]
-    const second = this.$refs.slide.$children[1]
-    first.visible = true
-    setTimeout(() => {
-      first.visible = false
-      second.visible = true
+    setInterval(() => {
+      if (this.active >= 3) {
+        this.active = 0
+      }
+      this.active = String(++this.active)
     }, 3000)
   }
 }
